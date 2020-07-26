@@ -866,6 +866,7 @@ def main():
     parser.add_argument("-o", "--out-dir", help="Directory where the output files should be placed", default=".\\")
     parser.add_argument("-j", "--json", help="Enable JSON output", action="store_true")
     parser.add_argument(
+        "-v",
         "--version",
         action="version",
         version="%(prog)s {}".format(__version__),
