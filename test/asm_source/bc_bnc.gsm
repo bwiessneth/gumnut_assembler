@@ -1,0 +1,11 @@
+        text
+        jmp up
+                
+        org 0x10
+up:     add r1, r1, 64
+        bc down
+        bnc up
+
+down:   sub r1, r1, 64
+        bz up
+        jmp down

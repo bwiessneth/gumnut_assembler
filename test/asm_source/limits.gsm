@@ -1,0 +1,59 @@
+                 text
+                 org   0x000           ; start here on reset
+                 jmp   main
+
+; Data memory layout
+
+                 data
+                 org 0x0
+big_dec_127:     byte  127      ; 127    0x7F
+big_dec_128:     byte  128      ; 128    0x80    
+big_dec_129:     byte  129      ; 129    0x81
+                 org 0x4
+big_dec_255:     byte  255      ; 255    0xFF
+big_dec_256:     byte  256      ; 256    0x100    
+big_dec_257:     byte  257      ; 257    0x101
+                 org 0x8
+big_dec_511:     byte  511      ; 511    0x1FF
+big_dec_512:     byte  512      ; 512    0x200
+big_dec_513:     byte  513      ; 513    0x201
+                 org 0xC
+big_dec_1023:    byte  1023     ; 1023   0x3FF
+big_dec_1024:    byte  1024     ; 1024   0x400
+big_dec_1025:    byte  1025     ; 1025   0x401
+                 org 0x10
+big_dec_2047:    byte  2047     ; 2047   0x7FF
+big_dec_2048:    byte  2048     ; 2048   0x800
+big_dec_2049:    byte  2049     ; 2049   0x801
+                 org 0x14
+big_dec_4095:    byte  4095     ; 4095   0xFFF
+big_dec_4096:    byte  4096     ; 4096   0x1000
+big_dec_4097:    byte  4097     ; 4097   0x1001
+                 org 0x18
+neg_dec_0:       byte -0        ; 0      0x0
+neg_dec_1:       byte -1        ; 0      0x0
+neg_dec_2:       byte -2        ; 0      0x0
+neg_dec_3:       byte -3        ; 0      0x0
+
+neg_dec_255:     byte -255      ; 0      0x0
+neg_dec_256:     byte -256      ; 0      0x0
+neg_dec_257:     byte -257      ; 0      0x0
+
+; Main program
+                 text
+                 org   0x010
+main:            jmp   finish
+
+; idle loop    
+finish:          jmp   finish          
+
+
+
+        
+del:    ldm r2, (r1)+7
+        ldm r3, (r1)+7      
+
+stor:	add r1, r1, 1		; r1 = 1
+        sub r1, r1, 1		; r1 = 0 -> ZERO
+        bnz del
+        bz stor       

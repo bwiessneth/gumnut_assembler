@@ -1,0 +1,25 @@
+	data
+value1:	byte 0xAA               
+value2:	byte 0xBB
+value3:	byte 0xCC
+value4: byte 0xDD
+
+        text
+	ldm r1, value1
+	ldm r2, value2
+	ldm r3, value3
+	ldm r1, value1 + 1  
+	ldm r2, value2 + 1 
+	ldm r3, value3 + 1
+
+        org 0x08
+        ldm r1, (r1)
+        ldm r1, (r1) + 1
+        ldm r1, (r1) + 2
+        ldm r1, (r1) + 3
+                
+        org 0x10
+        ldm r1, (r1)
+        ldm r1, (r1) - 1
+        ldm r1, (r1) - 2
+        ldm r1, (r1) - 3

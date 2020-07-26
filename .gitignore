@@ -20,3 +20,8 @@ cover/
 
 # Assembler output dir
 asm_output
+
+# Build
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,11 @@
+                data
+saved_r1:       bss     1
+
+                text
+sensor_data:    equ     0       ; address of sensor data
+                org     1
+                stm     r1, saved_r1
+                inp     r1, sensor_data
+                ;...             ; process the data
+                ldm     r1, saved_r1
+                reti

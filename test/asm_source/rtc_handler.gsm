@@ -1,0 +1,67 @@
+;;; ---------------------------------------------------------
+;;; Program reset: jump to main program
+
+                text
+                org     0
+                jmp     main
+
+;;; ---------------------------------------------------------
+;;; Port addresses
+rtc_start_count:        equ     16 ; data output register
+rtc_count_value:        equ     16 ; data input register
+rtc_int_enable:         equ     17 ; control output register
+rtc_int_status:         equ     17 ; status input register
+
+;;; ---------------------------------------------------------
+;;; Interrupt handler
+
+                        data
+int_r1:                 bss     1 ; save location for
+                                  ; handler registers
+
+                        text
+                        org     1
+        
+int_handler:            stm     r1, int_r1 ; save registers
+check_rtc:              sub     r0, r1, 0
+                        bz      check_next
+                        add     r1, r0, 1
+                        stm     r1, rtc_int_flag ; tell main
+                                                 ; program
+check_next:             add r0, r0, r0
+                        ;...
+
+int_end:                ldm     r1, int_r1 ; restore registers
+                        reti
+
+;;; ---------------------------------------------------------
+;;; init_interrupts:    Initialize 2ms periodic interrupt, etc.
+
+                        data
+rtc_divisor:            equ     199     ; divide 100kHz down
+                                        ; to 500Hz
+rtc_int_flag:           bss     1
+        
+                        text
+init_interrupts:        add     r1, r0, rtc_divisor
+                        out     r1, rtc_start_count
+                        add     r1, r0, 1
+                        out     r1, rtc_int_enable
+                        stm     r0, rtc_int_flag
+                        ;...     ; other initializations
+                        ret
+                        
+;;; ---------------------------------------------------------
+;;; main program
+
+                text
+main:           jsb     init_interrupts
+                enai
+main_loop:      stby
+                ldm     r1, rtc_int_flag
+                sub     r0, r1, 1
+                bnz     main_next
+                ;jsb     task_2ms
+                stm     r0, rtc_int_flag
+main_next:      add r0, r0, r0 ;...
+                jmp     main_loop

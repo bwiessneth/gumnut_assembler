@@ -1,0 +1,14 @@
+        text
+        jmp middle
+                
+        org 0x10
+first:  add r1, r1, 1
+        jmp last
+
+middle:   add r1, r1, 1
+        add r1, r1, 1
+        jmp first
+
+last:   sub r1, r1, 1
+        sub r1, r1, 1
+        jmp middle
