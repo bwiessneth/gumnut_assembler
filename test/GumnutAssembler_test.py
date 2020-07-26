@@ -198,7 +198,7 @@ def test_objectcode_comparison_static(gass):
         asm = GumnutAssembler.GumnutAssembler()
         asm.load_asm_source_from_file(source_directory + source)
         asm.assemble()
-        asm.create_output_files(datafile=gasm_datafile, textfile=gasm_textfile)
+        asm.create_output_files(datafile=datafile, textfile=textfile)
 
         # Create md5 hash and compare outputs
         assert generate_md5(textfile) == generate_md5(gasm_textfile)
