@@ -8,7 +8,7 @@ import re
 import os
 import logging
 import json
-from . import GumnutExceptions
+from GumnutAssembler import GumnutExceptions
 
 logger = logging.getLogger("root")
 
