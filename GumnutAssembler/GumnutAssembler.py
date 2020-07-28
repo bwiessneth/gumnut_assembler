@@ -1,13 +1,10 @@
-__version__ = "1.0.0"
-__author__ = "Benjamin Wiessneth"
-
-
 from collections import OrderedDict
 
 import re
 import os
 import logging
 import json
+from GumnutAssembler import __version__
 from GumnutAssembler import GumnutExceptions
 
 logger = logging.getLogger("root")
@@ -861,7 +858,7 @@ class GasmInstruction:
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description="GumnutAssembler")
+    parser = argparse.ArgumentParser(description="Gumnut assembler written in Python")
     parser.add_argument("source", help="Gumnut assembler source files")
     parser.add_argument("-o", "--out-dir", help="Directory where the output files should be placed", default=".\\")
     parser.add_argument("-j", "--json", help="Enable JSON output", action="store_true")
