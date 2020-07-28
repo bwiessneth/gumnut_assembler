@@ -1,11 +1,30 @@
 import setuptools
+import codecs
+import os.path
+
+# Taken from pip itself (https://github.com/pypa/pip/blob/master/setup.py#L11)
+def read(rel_path):
+    here = os.path.abspath(os.path.dirname(__file__))
+    with codecs.open(os.path.join(here, rel_path), 'r') as fp:
+        return fp.read()
+
+
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+
 setuptools.setup(
-    name="GumnutAssembler", # Replace with your own username
-    version="1.0.0",
+    name="GumnutAssembler",
+	version=get_version("GumnutAssembler/__init__.py"),
     author="Benjamin Wiessneth",
     author_email="b.wiessneth@gmail.com",
     description="Gumnut Assembler",
@@ -20,6 +39,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     entry_points={'console_scripts': [
-        'GumnutAssembler = GumnutAssembler.GumnutAssembler:main',
+        'gaspy = GumnutAssembler.GumnutAssembler:main',
     ]}
 )
