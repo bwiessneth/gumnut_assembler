@@ -4,8 +4,8 @@ import re
 import os
 import logging
 import json
-from GumnutAssembler import __version__
-from GumnutAssembler import GumnutExceptions
+from gaspy import __version__
+from gaspy import GumnutExceptions
 
 logger = logging.getLogger("root")
 
