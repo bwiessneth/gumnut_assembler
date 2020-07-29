@@ -5,9 +5,13 @@
 
 # gaspy
 
+Gumnut Assembler written in Python.
+
+
+
 ## Motivation
 
-*gaspy* is a python implementation of Peter Ashenden's Gumnut assembler *gasm* which assembles the objectcode to be used with his 8-bit soft-core *Gumnut*.
+*gaspy* is a python-based implementation of Peter Ashenden's Gumnut assembler *gasm* which assembles the objectcode to be used with his 8-bit soft-core *Gumnut*.
 For more information refer to *The Designers Guide to VHDL* https://www.sciencedirect.com/book/9780120887859/the-designers-guide-to-vhdl
 
 
