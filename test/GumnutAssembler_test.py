@@ -11,9 +11,9 @@ sys.path.insert(0, test_path + "/../")
 sys.path.insert(0, "GumnutSimulator")
 sys.path.insert(0, os.getcwd())  # Add current directory to PYTHONPATH
 
-from GumnutAssembler import GumnutAssembler  # noqa: E402
-from GumnutAssembler.GumnutAssembler import GasmLine  # noqa: E402
-from GumnutAssembler import GumnutExceptions  # noqa: E402
+from gaspy import GumnutAssembler  # noqa: E402
+from gaspy.GumnutAssembler import GasmLine  # noqa: E402
+from gaspy import GumnutExceptions  # noqa: E402
 
 
 def generate_md5(filename):
