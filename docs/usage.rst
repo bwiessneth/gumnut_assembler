@@ -2,7 +2,7 @@
 Usage
 =====
 
-See the possible arguments and options by calling GumnutAssembler with the ``-h`` or ``--help`` argument:
+See the possible arguments and options by calling *gaspy* with the ``-h`` or ``--help`` argument:
 
 .. code-block:: console
 
@@ -25,7 +25,7 @@ See the possible arguments and options by calling GumnutAssembler with the ``-h`
 Assemble from source
 --------------------
 
-Assuming you have source file ``jmp.gsm`` located on your desktop you can assemble it by passing it to GumnutAssembler
+Assuming you have source file ``jmp.gsm`` located on your desktop you can assemble it by passing it to *gaspy*
 
 .. code-block:: console
 	
@@ -43,7 +43,7 @@ Those files are always placed in the same directory the source file is located.
 Output directory
 ----------------
 
-You can tell GumnutAssembler to place the output files into another directory by supplying the ``-o``/``--output`` argument and the desired path:
+You can tell *gaspy* to place the output files into another directory by supplying the ``-o``/``--output`` argument and the desired path:
 
 .. code-block:: console
 

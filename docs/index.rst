@@ -1,4 +1,4 @@
-Welcome to GumnutAssembler's documentation!
+Welcome to gaspy's documentation!
 ===========================================
 
 Contents:

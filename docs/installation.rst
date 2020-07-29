@@ -4,10 +4,10 @@ Installation
 
 Install the package with pip::
 
-$ pip install GumnutAssembler
+$ pip install gaspy
 
 
-After that the Gumnut assembler executable ``gaspy`` should be accessible from anywhere on your machine.
+After that the executable ``gaspy`` should be accessible from anywhere on your machine.
 Check if the installation was successful by calling it with the ``-v`` or ``--version`` argument:
 
 .. code-block:: console
