@@ -1,11 +1,10 @@
+import json
+import logging
+import os
+import re
 from collections import OrderedDict
 
-import re
-import os
-import logging
-import json
-from gaspy import __version__
-from gaspy import GumnutExceptions
+from gaspy import GumnutExceptions, __version__
 
 logger = logging.getLogger("root")
 
