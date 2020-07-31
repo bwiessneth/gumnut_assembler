@@ -1,6 +1,3 @@
-__author__ = "BW"
-
-
 class Error(Exception):
 
     """

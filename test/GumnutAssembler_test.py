@@ -1,10 +1,8 @@
-__author__ = "BW"
-
 import os
 import sys
-import hashlib
-import pytest
 
+import pytest
+from helper import generate_md5
 
 test_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, test_path + "/../")
@@ -12,15 +10,8 @@ sys.path.insert(0, "GumnutSimulator")
 sys.path.insert(0, os.getcwd())  # Add current directory to PYTHONPATH
 
 from gaspy import GumnutAssembler  # noqa: E402
-from gaspy.GumnutAssembler import GasmLine  # noqa: E402
 from gaspy import GumnutExceptions  # noqa: E402
-
-
-def generate_md5(filename):
-    with open(filename, "rb") as f:
-        data = f.read()
-        return hashlib.md5(data).hexdigest()
-    return -1
+from gaspy.GumnutAssembler import GasmLine  # noqa: E402
 
 
 @pytest.fixture

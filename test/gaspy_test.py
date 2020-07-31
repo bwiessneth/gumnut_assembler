@@ -1,6 +1,8 @@
-import subprocess
 import os
-import hashlib
+import subprocess
+
+from helper import generate_md5
+
 
 def capture(command):
     proc = subprocess.Popen(command,
@@ -9,13 +11,6 @@ def capture(command):
     )
     out,err = proc.communicate()
     return out, err, proc.returncode
-
-
-def generate_md5(filename):
-    with open(filename, "rb") as f:
-        data = f.read()
-        return hashlib.md5(data).hexdigest()
-    return -1
 
 
 def test_gaspy_cli_arg_help():
