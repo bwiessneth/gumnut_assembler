@@ -5,36 +5,33 @@ from helper import generate_md5
 
 
 def capture(command):
-    proc = subprocess.Popen(command,
-        stdout = subprocess.PIPE,
-        stderr = subprocess.PIPE,
-    )
-    out,err = proc.communicate()
+    proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
+    out, err = proc.communicate()
     return out, err, proc.returncode
 
 
 def test_gaspy_cli_arg_help():
     command = ["gaspy", "-h"]
     out, err, exitcode = capture(command)
-    assert exitcode == 0    
+    assert exitcode == 0
 
     command = ["gaspy", "--help"]
     out, err, exitcode = capture(command)
-    assert exitcode == 0    
+    assert exitcode == 0
 
 
 def test_gaspy_cli_arg_version():
     command = ["gaspy", "-v"]
     out, err, exitcode = capture(command)
-    assert exitcode == 0    
-    assert out == b'gaspy 1.0.0\r\n'
-    assert err == b''    
+    assert exitcode == 0
+    assert out == b"gaspy 1.0.0\r\n"
+    assert err == b""
 
     command = ["gaspy", "--version"]
     out, err, exitcode = capture(command)
-    assert exitcode == 0    
-    assert out == b'gaspy 1.0.0\r\n'
-    assert err == b''
+    assert exitcode == 0
+    assert out == b"gaspy 1.0.0\r\n"
+    assert err == b""
 
 
 def test_gaspy_cli_objectcode_comparison_static():
@@ -61,7 +58,7 @@ def test_gaspy_cli_objectcode_comparison_static():
 
         command = ["gaspy", source_directory + source, "-o", output_directory]
         out, err, exitcode = capture(command)
-        assert exitcode == 0    
+        assert exitcode == 0
 
         # Create md5 hash and compare outputs
         assert generate_md5(textfile) == generate_md5(gasm_textfile)
