@@ -144,7 +144,7 @@ class GumnutAssembler:
             # Check for HEX prefix
             if operand[0:2] == "0x":
                 # Convert number to DEC
-                result = int(operand[2 : len(operand)], 16)
+                result = int(operand[2 : len(operand)], 16)     # noqa: E203
                 if negative:
                     result = (~(result) & 0xFF) + 1
                     return result
@@ -153,7 +153,7 @@ class GumnutAssembler:
             # Check for BIN prefix
             elif operand[0:2] == "0b":
                 # Convert number to DEC
-                result = int(operand[2 : len(operand)], 2)
+                result = int(operand[2 : len(operand)], 2)  # noqa: E203
                 return result
             elif operand.isdigit():
                 # Operand is already a number
@@ -283,7 +283,7 @@ class GumnutAssembler:
             # Check if operand has the format "r1"
             if operand[0] == "r" and operand[1].isdigit():
                 # Return number without "r"
-                return int(operand[1 : len(operand)])
+                return int(operand[1 : len(operand)])   # noqa: E203
             else:
                 # No valid register number
                 return -1
