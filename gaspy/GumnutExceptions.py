@@ -16,12 +16,13 @@ class Error(Exception):
     """
 
     def __init__(self, expression, message):
+        super().__init__()
         self.type = type(self).__name__
         self.expression = expression
         self.message = message
 
     def __repr__(self):
-        return "Error <", self.type, ", ", self.message, ", ", self.expression, ">"
+        return str("Error <", self.type, ", ", self.message, ", ", self.expression, ">")
 
     def as_dict(self):
         return dict({"type": self.type, "expression": self.expression, "message": self.message})
@@ -35,8 +36,6 @@ class InvalidPCValue(Error):
     ``4095``.
     """
 
-    pass
-
 
 class InstructionMemorySizeExceeded(Error):
 
@@ -44,8 +43,6 @@ class InstructionMemorySizeExceeded(Error):
     Get's raised when trying to upload more data into the instruction
     memory than it can hold.
     """
-
-    pass
 
 
 class DataMemorySizeExceeded(Error):
@@ -55,8 +52,6 @@ class DataMemorySizeExceeded(Error):
     than it can hold.
     """
 
-    pass
-
 
 class DataMemoryAccessViolation(Error):
 
@@ -65,16 +60,12 @@ class DataMemoryAccessViolation(Error):
     isn't accessible.
     """
 
-    pass
-
 
 class InvalidInstruction(Error):
 
     """
     Get's raised when an unknown or invalid instruction is encountered.
     """
-
-    pass
 
 
 class EmptyReturnStack(Error):
@@ -84,8 +75,6 @@ class EmptyReturnStack(Error):
     return address stack is empty.
     """
 
-    pass
-
 
 class ReturnAddressStackOverflow(Error):
 
@@ -93,5 +82,3 @@ class ReturnAddressStackOverflow(Error):
     Get's raised when trying jump into a subroutine although the
     return address stack is already full.
     """
-
-    pass

@@ -872,7 +872,7 @@ def main():
     args = parser.parse_args()
 
     file_name = os.path.basename(args.source)
-    out_name, file_ext = os.path.splitext(file_name)
+    out_name = os.path.splitext(file_name)[0]
 
     datafile = os.path.join(args.out_dir, out_name + "_data.dat")
     textfile = os.path.join(args.out_dir, out_name + "_text.dat")
