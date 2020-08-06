@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'GumnutAssembler'
+project = 'gaspy'
 copyright = '2020, bewi.uber.space/gaspy'
 author = 'Benjamin Wießneth'
 
@@ -99,7 +99,7 @@ html_context = {
     'css_files': ['_static/css/custom.css'],
     'display_github': True,
     'github_user': 'bwiessneth',
-    'github_repo': 'gumnut_assembler',
+    'github_repo': 'gaspy',
     'github_version': 'master',
     'conf_py_path': '/docs/'
 }
