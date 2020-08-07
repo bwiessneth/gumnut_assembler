@@ -33,8 +33,8 @@ Assuming you have source file ``jmp.gsm`` located on your desktop you can assemb
 
 Per default gaspy always returns two files:
 
-* The text file (``_text.dat``) containing assembled the instruction memory
-* The data file (``_data.dat``) containing assembled the data memory
+* The text file (``jmp_text.dat``) containing assembled the instruction memory
+* The data file (``jmp_data.dat``) containing assembled the data memory
 
 Those files are always placed in the same directory the source file is located.
 
