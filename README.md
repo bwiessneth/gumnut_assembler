@@ -1,4 +1,4 @@
-![Tests](https://github.com/bwiessneth/gumnut_assembler/workflows/Tests/badge.svg)
+[![tests](https://github.com/bwiessneth/gaspy/actions?query=workflow%3Atests)](https://github.com/bwiessneth/gaspy/workflows/tests/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/gumnut-assembler/badge/?version=latest)](https://gumnut-assembler.readthedocs.io/en/latest/?badge=latest)
 
 
