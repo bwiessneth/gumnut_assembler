@@ -26,4 +26,4 @@ The only (known) limitation is the implementation of the ```equ``` directive in 
 
 # Documentation 
 
-Please refer to https://gumnut-assembler.readthedocs.io/en/latest/
+Please refer to https://gaspy.readthedocs.io/en/latest/
