@@ -164,6 +164,11 @@ class GumnutAssembler:
                 else:
                     return result
 
+            if operand[0] == "'" and operand[-1] == "'":
+                operand = operand.replace("'", "")
+                result = ord(operand)
+                return result
+
         return operand
 
     def _format_input(self, operand):
@@ -190,7 +195,7 @@ class GumnutAssembler:
         """
         # Generate regex pattern
         pattern = re.compile(
-            r"^\s*(?:([A-Za-z]\w*)[:])?(?:\s*([A-Za-z]{2,4})(?:\s+([A-Za-z0-9+-]\w*)(?:\s)*(?:[,])*(?:\s)*(?:[\(])*(?:\s*)([A-Za-z0-9]\w*)?(?:\s)*(?:[\)])*(?:\s*[,]*\s*([A-Za-z0-9\+\-\ \_]*))?)?)?"  # noqa: E501
+            r"^\s*(?:([A-Za-z]\w*)[:])?(?:\s*([A-Za-z]{2,4})(?:\s+([\w\'\-]*)(?:\s)*(?:[,])*(?:\s)*(?:[\(])*(?:\s*)([A-Za-z0-9]\w*)?(?:\s)*(?:[\)])*(?:\s*[,]*\s*([A-Za-z0-9\+\-\ \_]*))?)?)?"  # noqa: E501
         )
 
         # Match regex pattern against current line
