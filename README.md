@@ -8,22 +8,43 @@
 Gumnut Assembler written in Python.
 
 
-
-## Motivation
-
-*gaspy* is a python-based implementation of Peter Ashenden's Gumnut assembler *gasm* which assembles the objectcode to be used with his 8-bit soft-core *Gumnut*.
+*gaspy* is a python-based implementation of Peter Ashenden's Gumnut assembler *gasm* which assembles the machine code to be used with his 8-bit soft-core *Gumnut*.
 For more information refer to *The Designers Guide to VHDL* https://www.sciencedirect.com/book/9780120887859/the-designers-guide-to-vhdl
 
+*gaspy* was forked from my very first implementation created at the Laboratory for digital engineering at University of Applied Sciences in 2015.
 
-
-## Status
-
-As of now *gaspy* support all *gasm* instructions and assembles the same objectcode as *gasm*.
-
-The only (known) limitation is the implementation of the ```equ``` directive in conjunction with ascii values.
+As of now *gaspy* support all *gasm* instructions and assembles the same machine code as *gasm*.
 
 
 
-# Documentation 
+# Documentation
 
-Please refer to https://gumnut-assembler.readthedocs.io/en/latest/
+Please refer to https://gaspy.readthedocs.io/en/latest/
+
+
+
+# Changelog
+
+## 1.0.1
+
+### Added
+
+- Proper CLI for standalone usage
+- Documentation (still in progress, though)
+- Introduced ``tox`` for handling testing, build, and publishing tasks
+- Introduced Github Actions for automated testing
+
+### Changed
+
+- Replaced ``nosetest`` with ``pytest`` as the choice for unit and integration testing
+- Updated the existing tests for ``pytest``
+
+### Fixed
+
+- Module imports were fixed
+
+
+
+## 1.0.0
+
+The initial version which was *gaspy* was forked from.
