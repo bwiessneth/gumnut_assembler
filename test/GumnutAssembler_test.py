@@ -160,7 +160,10 @@ def test_extract_identifier_from_line_misc_instructions(gass):
     assert gass._extract_identifier_from_line("null0: byte 0") == GasmLine("null0", "byte", 0, None, None)
     assert gass._extract_identifier_from_line("neg_1: byte -1") == GasmLine("neg_1", "byte", 0xFF, None, None)
     
-    assert gass._extract_identifier_from_line("char_a: equ 'a'") == GasmLine("char_a", "equ", 97, None, None)
+    assert gass._extract_identifier_from_line("char_a: equ 'a'") == GasmLine("char_a", "equ", ord('a'), None, None)
+    assert gass._extract_identifier_from_line("char_a: equ 'A'") == GasmLine("char_a", "equ", ord('A'), None, None)
+    assert gass._extract_identifier_from_line("char_a: equ '0'") == GasmLine("char_a", "equ", ord('0'), None, None)
+    assert gass._extract_identifier_from_line("char_a: equ 'Z'") == GasmLine("char_a", "equ", ord('Z'), None, None)
 
     with pytest.raises(GumnutExceptions.InvalidInstruction):
         gass._extract_identifier_from_line("zyxq")
@@ -179,6 +182,7 @@ def test_objectcode_comparison_static(gass):
         "bz_bnz.gsm",
         "bc_bnc.gsm",
         "ldm.gsm",
+        "equ.gsm",
     ]  # , 'limits.gsm'
 
     for source in sample_sources:
