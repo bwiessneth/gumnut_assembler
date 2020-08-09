@@ -30,6 +30,20 @@ Please refer to https://gaspy.readthedocs.io/en/latest/
 Changelog
 =========
 
+1.0.2
+-----
+
+Changed
+~~~~~~~
+- The README file is now also using reStructuredText format
+
+Fixed
+~~~~~
+
+- ``equ`` directive is now working for ascii values (e.g. ``char_a: equ 'a'``)
+
+
+
 1.0.1
 -----
 
@@ -52,6 +66,8 @@ Fixed
 ~~~~~
 
 -  Module imports were fixed
+
+
 
 1.0.0
 -----
