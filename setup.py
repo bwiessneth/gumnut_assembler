@@ -18,7 +18,7 @@ def get_version(rel_path):
     raise RuntimeError("Unable to find version string.")
 
 
-with open("README.md", "r") as fh:
+with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 
@@ -29,7 +29,7 @@ setuptools.setup(
     author_email="b.wiessneth@gmail.com",
     description="Gumnut Assembler written in Python",
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     url="https://github.com/bwiessneth/gaspy",
     packages=setuptools.find_packages(),
     classifiers=[
