@@ -29,7 +29,7 @@ setuptools.setup(
     author_email="b.wiessneth@gmail.com",
     description="Gumnut Assembler written in Python",
     long_description=long_description,
-    long_description_content_type="text/text/x-rst",
+    long_description_content_type="text/x-rst",
     url="https://github.com/bwiessneth/gaspy",
     packages=setuptools.find_packages(),
     classifiers=[
