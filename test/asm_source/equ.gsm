@@ -1,0 +1,14 @@
+        text
+        org 0x10
+
+test_0: equ 0
+		out	r1, test_0
+
+test_1: equ 1
+		out	r1, test_1
+
+test_a: equ 'a'
+		out	r1, test_a
+
+test_b: equ 'b'
+		out	r1, test_b
