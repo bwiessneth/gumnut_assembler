@@ -2,8 +2,8 @@
    :target: https://github.com/bwiessneth/gaspy/actions?query=workflow%3Atests
    :alt: tests status
 
-.. image:: https://readthedocs.org/projects/gumnut-assembler/badge/?version=latest
-   :target: https://gumnut-assembler.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/gaspy/badge/?version=latest
+   :target: https://gaspy.readthedocs.io/en/latest/?badge=latest
    :alt: docs status
 
 
