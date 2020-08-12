@@ -44,6 +44,7 @@ def test_gaspy_cli_objectcode_comparison_static():
         "bz_bnz.gsm",
         "bc_bnc.gsm",
         "ldm.gsm",
+        "equ.gsm",
     ]
 
     for source in sample_sources:
