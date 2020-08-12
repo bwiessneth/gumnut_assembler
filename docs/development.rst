@@ -6,17 +6,18 @@ On this page you can find some pointers and remarks regarding development for th
 
 
 
-Setup python environment and install required packages
-------------------------------------------------------
+Setup
+-----
 
-You definitely want to create a isolated python environment.
+You definitely want to create an isolated python environment for development.
 That way the required packages you are going to install with ``pip`` are encapsulated form your systemwide python installation. 
 For more info check https://virtualenv.pypa.io/en/latest/
+The packages listed within ``requirements.txt`` are only needed for development and are subject to change. 
 
 ::
 
   [john@desktop ~]$ cd gaspy
-  [john@desktop gaspy]$ virtualenv -p python3 ENV
+  [john@desktop gaspy]$ virtualenv -p ENV
   [john@desktop gaspy]$ source ENV/bin/activate
   (ENV) [john@desktop gaspy]$ pip install -r requirements.txt
   (ENV) [john@desktop gaspy]$
@@ -49,43 +50,32 @@ Set the default line width which is used by ``black``.
 tox.ini
 ~~~~~~~
 
-Default options/overrides for ``flake8``.
+``tox`` is a generic virtualenv management and test command line tool.
+For more info check https://tox.readthedocs.io/en/latest/
 
+``tox.ini`` contains:
 
-pytest.ini
-~~~~~~~~~~
-
-Default options for running ``pytest``.
+* various tool options/overrides for various tools like ``flake8`` or ``black``
+* definitions of test environments which are used
+* various helper commands like ``build``, ``docs``, or ``publish``
 
 
 
 Tests
 -----
 
-``pytest`` is used for testing. The tests and the needed files are located within the ``test`` directory. 
-To run the tests simply call ``pytest`` from the project root with the virtual environment enabled.
+``pytest`` and ``tox``  are used for testing. The tests and the needed files are located within the ``test`` directory. 
+To run the tests simply call ``tox -e pytest`` from the project root with the virtual environment enabled.
+``tox`` will take care of installing the *gaspy* package in development mode and run the tests against it.
 
 
-:: 
+Scope of tests
+~~~~~~~~~~~~~~
 
-	(ENV) [john@desktop gaspy]$ pytest
-	================================ test session starts =================================
+Tests are run against:
 
-	[...]
-
-	----------- coverage: platform win32, python 3.7.7-final-0 -----------
-	Name                                  Stmts   Miss  Cover
-	---------------------------------------------------------
-	gaspy\GumnutAssembler.py      543     50    91%
-	gaspy\GumnutExceptions.py      24      2    92%
-	gaspy\__init__.py               1      0   100%
-	---------------------------------------------------------
-	TOTAL                                   568     52    91%
-	Coverage HTML written to dir htmlcov
-
-
-	================================= 23 passed in 0.61s =================================
-
+* the *gaspy* package (this way also the code-coverage is determined)
+* the *gaspy* CLI tool
 
 
 Objectcode verification
@@ -99,15 +89,6 @@ In future versions I'd like to implement the ``test_objectcode_comparison_dynami
 
 
 
-Testing the package
--------------------
-
-To install the package locally for testing in editable run ``pip install -e .``.
-To uninstall the package run ``pip uninstall gaspy``.
-See https://stackoverflow.com/a/19048754
-
-
-
 Packaging for PyPI
 ------------------
 
@@ -115,12 +96,14 @@ To package the project for distribution and publishing it on PyPI a few steps ar
 For more information see https://packaging.python.org/tutorials/packaging-projects/
 
 * Set version in ``gaspy\__init__.py``
-* Run ``python setup.py sdist bdist_wheel``
-* Upload package to the test index ``python -m twine upload --repository testpypi dist/*``
+* Run ``tox -e build``
+* Run ``tox -e publish-test``
 * Download and install from test index ``python -m pip install --index-url https://test.pypi.org/simple/ --no-deps gaspy``
 
 If all seems alright, repeat above steps and upload to the real PyPI.
 
+* Run ``tox -e publish``
+* Download and install from live index ``python -m pip install gaspy``
 
 
 
