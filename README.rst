@@ -20,7 +20,7 @@ https://www.sciencedirect.com/book/9780120887859/the-designers-guide-to-vhdl
 *gaspy* was forked from my very first implementation created at the laboratory for digital engineering at the University of
 Applied Sciences Augsburg back in 2015.
 
-As of now, *gaspy* support all *gasm* instructions and assembles the same machine code as *gasm*.
+As of now, *gaspy* supports all *gasm* instructions and assembles the same machine code as *gasm*.
 
 
 
