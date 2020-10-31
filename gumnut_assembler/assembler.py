@@ -5,7 +5,7 @@ import re
 from collections import OrderedDict
 
 from gumnut_assembler import __version__
-from gumnut_assembler.exceptions import InvalidInstruction
+from gumnut_assembler.exceptions import InvalidInstruction, InstructionMemorySizeExceeded
 
 logger = logging.getLogger("root")
 
@@ -737,9 +737,7 @@ class GumnutAssembler:
                 result = self._assemble_source_line(line)
                 if result != -1:
                     if self.InstrMemPointer > 4095:
-                        raise InstructionMemorySizeExceeded(
-                            self.InstrMemPointer, "Maximum instruction memory size hit"
-                        )
+                        raise InstructionMemorySizeExceeded(self.InstrMemPointer, "Maximum instruction memory size hit")
 
                     self.InstrList[self.InstrMemPointer] = result
 
