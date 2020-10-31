@@ -20,6 +20,7 @@ cover/
 
 # Assembler output dir
 asm_output
+gumnut_assembler_output
 
 # Build
 build/
