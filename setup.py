@@ -23,14 +23,14 @@ with open("README.rst", "r") as fh:
 
 
 setuptools.setup(
-    name="gaspy",
-    version=get_version("gaspy/__init__.py"),
+    name="gumnut_assembler",
+    version=get_version("gumnut_assembler/__init__.py"),
     author="Benjamin Wiessneth",
     author_email="b.wiessneth@gmail.com",
     description="Gumnut Assembler written in Python",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://github.com/bwiessneth/gaspy",
+    url="https://github.com/bwiessneth/gumnut-assembler",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -38,5 +38,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    entry_points={"console_scripts": ["gaspy = gaspy.GumnutAssembler:main"]},
+    entry_points={"console_scripts": ["gumnut_assembler = gumnut_assembler.assembler:main"]},
 )
