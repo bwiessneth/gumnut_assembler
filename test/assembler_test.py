@@ -187,6 +187,7 @@ def test_objectcode_comparison_static(gass):
         gasm_datafile = os.path.join(gasm_directory, source_name + "_data.dat")
         gasm_textfile = os.path.join(gasm_directory, source_name + "_text.dat")
 
+        gass.__init__()
         gass.load_asm_source_from_file(source_directory + source)
         gass.assemble()
         gass.create_output_files(datafile=datafile, textfile=textfile)
@@ -194,35 +195,6 @@ def test_objectcode_comparison_static(gass):
         # Create md5 hash and compare outputs
         assert generate_md5(textfile) == generate_md5(gasm_textfile)
         assert generate_md5(datafile) == generate_md5(gasm_datafile)
-
-
-# # TODO:
-# def test_objectcode_comparison_dynamic(gass, source):
-#     source_directory = "test/asm_source/"
-#     output_directory = "test/asm_output/"
-#     gasm_directory = "test/gasm_output/"
-
-#     source_name, source_ext = os.path.splitext(source)
-#     datafile = os.path.join(output_directory, source_name + "_data.dat")
-#     textfile = os.path.join(output_directory, source_name + "_text.dat")
-#     gasm_datafile = os.path.join(gasm_directory, source_name + "_data.dat")
-#     gasm_textfile = os.path.join(gasm_directory, source_name + "_text.dat")
-
-#     asm = GumnutAssembler.GumnutAssembler()
-#     asm.load_asm_source_from_file(source)
-#     asm.assemble()
-#     asm.create_output_files(datafile=datafile, textfile=textfile)
-
-#     # TODO:
-#     # Call gasm assembler subprocess.run(['java', '-classpath', 'test/gasm/Gasm.jar;test/gasm/antlr.jar;test/gasm/',
-#     # 'Gasm', source_directory + source, '-t','test/gasm_output/'+source_name+'_text.dat',
-#     #'-d','test/gasm_output/'+source_name+'_data.dat'],
-#     # shell=True, check=True)
-
-#     # Create md5 hash and compare outputs
-#     # assert generate_md5(textfile) == generate_md5(gasm_textfile)
-#     # assert generate_md5(datafile) == generate_md5(gasm_datafile)
-#     pass
 
 
 def test_get_register_number(gass):
