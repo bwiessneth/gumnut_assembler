@@ -1,5 +1,5 @@
-Welcome to gaspy's documentation!
-===========================================
+Welcome to gumnut_assembler's documentation!
+############################################
 
 Contents:
 
@@ -10,13 +10,3 @@ Contents:
    installation*
    usage*
    *
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
