@@ -4,7 +4,8 @@ import os
 import re
 from collections import OrderedDict
 
-from gaspy import GumnutExceptions, __version__
+from gumnut_assembler import __version__
+from gumnut_assembler.exceptions import InvalidInstruction
 
 logger = logging.getLogger("root")
 
@@ -736,7 +737,7 @@ class GumnutAssembler:
                 result = self._assemble_source_line(line)
                 if result != -1:
                     if self.InstrMemPointer > 4095:
-                        raise GumnutExceptions.InstructionMemorySizeExceeded(
+                        raise InstructionMemorySizeExceeded(
                             self.InstrMemPointer, "Maximum instruction memory size hit"
                         )
 
@@ -805,7 +806,7 @@ class GumnutAssembler:
             if any(x.instruction == asm_line.instruction for x in self.instruction_set_requirements):
                 return True
 
-            raise GumnutExceptions.InvalidInstruction(asm_line.__str__(), "Unknown instruction")
+            raise InvalidInstruction(asm_line.__str__(), "Unknown instruction")
         else:
             return True
 
