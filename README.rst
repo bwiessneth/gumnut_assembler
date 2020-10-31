@@ -34,6 +34,16 @@ Please refer to https://gumnut-assembler.readthedocs.io/en/latest/
 Changelog
 *********
 
+2.0.0
+=====
+
+Changed
+-------
+
+-  Enforced proper module names and naming convention
+
+
+
 1.0.3
 =====
 
