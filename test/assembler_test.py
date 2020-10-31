@@ -4,14 +4,14 @@ import sys
 import pytest
 from helper import generate_md5
 
-from gaspy import GumnutAssembler  # noqa: E402
-from gaspy import GumnutExceptions  # noqa: E402
-from gaspy.GumnutAssembler import GasmLine  # noqa: E402
+from gumnut_assembler import assembler  # noqa: E402
+from gumnut_assembler.exceptions import InvalidInstruction
+from gumnut_assembler.assembler import GasmLine  # noqa: E402
 
 
 @pytest.fixture
 def gass():
-    return GumnutAssembler.GumnutAssembler()
+    return assembler.GumnutAssembler()
 
 
 def test_check_number_dec(gass):
@@ -160,7 +160,7 @@ def test_extract_identifier_from_line_misc_instructions(gass):
     assert gass._extract_identifier_from_line("char_a: equ '0'") == GasmLine("char_a", "equ", ord('0'), None, None)
     assert gass._extract_identifier_from_line("char_a: equ 'Z'") == GasmLine("char_a", "equ", ord('Z'), None, None)
 
-    with pytest.raises(GumnutExceptions.InvalidInstruction):
+    with pytest.raises(InvalidInstruction):
         gass._extract_identifier_from_line("zyxq")
 
 
@@ -187,43 +187,14 @@ def test_objectcode_comparison_static(gass):
         gasm_datafile = os.path.join(gasm_directory, source_name + "_data.dat")
         gasm_textfile = os.path.join(gasm_directory, source_name + "_text.dat")
 
-        asm = GumnutAssembler.GumnutAssembler()
-        asm.load_asm_source_from_file(source_directory + source)
-        asm.assemble()
-        asm.create_output_files(datafile=datafile, textfile=textfile)
+        gass.__init__()
+        gass.load_asm_source_from_file(source_directory + source)
+        gass.assemble()
+        gass.create_output_files(datafile=datafile, textfile=textfile)
 
         # Create md5 hash and compare outputs
         assert generate_md5(textfile) == generate_md5(gasm_textfile)
         assert generate_md5(datafile) == generate_md5(gasm_datafile)
-
-
-# # TODO:
-# def test_objectcode_comparison_dynamic(gass, source):
-#     source_directory = "test/asm_source/"
-#     output_directory = "test/asm_output/"
-#     gasm_directory = "test/gasm_output/"
-
-#     source_name, source_ext = os.path.splitext(source)
-#     datafile = os.path.join(output_directory, source_name + "_data.dat")
-#     textfile = os.path.join(output_directory, source_name + "_text.dat")
-#     gasm_datafile = os.path.join(gasm_directory, source_name + "_data.dat")
-#     gasm_textfile = os.path.join(gasm_directory, source_name + "_text.dat")
-
-#     asm = GumnutAssembler.GumnutAssembler()
-#     asm.load_asm_source_from_file(source)
-#     asm.assemble()
-#     asm.create_output_files(datafile=datafile, textfile=textfile)
-
-#     # TODO:
-#     # Call gasm assembler subprocess.run(['java', '-classpath', 'test/gasm/Gasm.jar;test/gasm/antlr.jar;test/gasm/',
-#     # 'Gasm', source_directory + source, '-t','test/gasm_output/'+source_name+'_text.dat',
-#     #'-d','test/gasm_output/'+source_name+'_data.dat'],
-#     # shell=True, check=True)
-
-#     # Create md5 hash and compare outputs
-#     # assert generate_md5(textfile) == generate_md5(gasm_textfile)
-#     # assert generate_md5(datafile) == generate_md5(gasm_datafile)
-#     pass
 
 
 def test_get_register_number(gass):

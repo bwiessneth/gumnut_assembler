@@ -10,30 +10,30 @@ def capture(command):
     return out, err, proc.returncode
 
 
-def test_gaspy_cli_arg_help():
-    command = ["gaspy", "-h"]
+def test_gumnut_assembler_cli_arg_help():
+    command = ["gumnut_assembler", "-h"]
     out, err, exitcode = capture(command)
     assert exitcode == 0
 
-    command = ["gaspy", "--help"]
-    out, err, exitcode = capture(command)
-    assert exitcode == 0
-
-
-def test_gaspy_cli_arg_version():
-    command = ["gaspy", "-v"]
-    out, err, exitcode = capture(command)
-    assert exitcode == 0
-
-    command = ["gaspy", "--version"]
+    command = ["gumnut_assembler", "--help"]
     out, err, exitcode = capture(command)
     assert exitcode == 0
 
 
+def test_gumnut_assembler_cli_arg_version():
+    command = ["gumnut_assembler", "-v"]
+    out, err, exitcode = capture(command)
+    assert exitcode == 0
 
-def test_gaspy_cli_objectcode_comparison_static():
+    command = ["gumnut_assembler", "--version"]
+    out, err, exitcode = capture(command)
+    assert exitcode == 0
+
+
+
+def test_gumnut_assembler_cli_objectcode_comparison_static():
     source_directory = "test/asm_source/"
-    output_directory = "test/gaspy_output/"
+    output_directory = "test/gumnut_assembler_output/"
     gasm_directory = "test/gasm_output/"
     sample_sources = [
         "sample.gsm",
@@ -54,7 +54,7 @@ def test_gaspy_cli_objectcode_comparison_static():
         gasm_datafile = os.path.join(gasm_directory, source_name + "_data.dat")
         gasm_textfile = os.path.join(gasm_directory, source_name + "_text.dat")
 
-        command = ["gaspy", source_directory + source, "-o", output_directory]
+        command = ["gumnut_assembler", source_directory + source, "-o", output_directory]
         out, err, exitcode = capture(command)
         assert exitcode == 0
 

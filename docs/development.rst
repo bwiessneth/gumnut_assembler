@@ -1,59 +1,65 @@
-===========
 Development
-===========
+###########
 
 On this page you can find some pointers and remarks regarding development for this project.
 
 
 
-Setup
------
+Virtual environment
+*******************
 
-You definitely want to create an isolated python environment for development.
-That way the required packages you are going to install with ``pip`` are encapsulated form your systemwide python installation. 
-For more info check https://virtualenv.pypa.io/en/latest/
-The packages listed within ``requirements.txt`` are only needed for development and are subject to change. 
+You definitely want to create an isolated python environment for development. That way the required
+packages you are going to install with ``pip`` are encapsulated form your systemwide python
+installation. For more info check https://virtualenv.pypa.io/en/latest/
 
 ::
 
-  [john@desktop ~]$ cd gaspy
-  [john@desktop gaspy]$ virtualenv -p ENV
-  [john@desktop gaspy]$ source ENV/bin/activate
-  (ENV) [john@desktop gaspy]$ pip install -r requirements.txt
-  (ENV) [john@desktop gaspy]$
+  [ziggy@stardust ~]$ cd gumnut-assembler
+  [ziggy@stardust gumnut-assembler]$ virtualenv .venv -p python3
 
 You can activate your new python environment like this:
 
 ::
 
-  [john@desktop gaspy]$ source ENV/bin/activate
-  (ENV) [john@desktop gaspy]$
+  [ziggy@stardust gumnut-assembler]$ source .venv/bin/activate
+  (.venv) [ziggy@stardust gumnut-assembler]$
 
 Once you're done playing with it, deactivate it with the following command:
 
 ::
 
-  (ENV) [john@desktop gaspy]$ deactivate
-  [john@desktop gaspy]$
+  (.venv) [ziggy@stardust gumnut-assembler]$ deactivate
+  [ziggy@stardust gumnut-assembler]$
 
 
 
-Config files
-------------
+Development dependencies
+************************
 
-pyproject.toml
-~~~~~~~~~~~~~~
+Activate the virtual environment and install the package via ``pip`` in editing-mode with the
+development dependencies:
 
-Set the default line width which is used by ``black``.
+::
+
+  (ENV) [ziggy@stardust gumnut-assembler]$ pip install -e .[dev]
 
 
-tox.ini
-~~~~~~~
 
-``tox`` is a generic virtualenv management and test command line tool.
+Tools
+*****
+
+This project comes with a few tools pre-configured. Refer to the following sections on how to use them.
+
+
+
+tox
+===
+
+	Command line driven CI frontend and development task automation tool
+
 For more info check https://tox.readthedocs.io/en/latest/
 
-``tox.ini`` contains:
+See ``tox.ini`` for:
 
 * various tool options/overrides for various tools like ``flake8`` or ``black``
 * definitions of test environments which are used
@@ -61,54 +67,142 @@ For more info check https://tox.readthedocs.io/en/latest/
 
 
 
+pytest
+======
+
+	helps you write better programs
+
+For more info check https://docs.pytest.org/en/stable/
+
+The tests are located within the ``test`` directory. 
+``pytest`` will look for them in that directory and run them.
+To run the tests simply call ``tox -e pytest`` from the project root with the virtual environment enabled.
+
+
+
+black
+=====
+
+	The uncompromising code formatter
+
+For more info check https://black.readthedocs.io/en/stable/
+
+Run it via calling ``tox -e pytest`` from the project root with the virtual environment enabled.
+
+
+
+flake8
+======
+
+	Flake8: Your Tool For Style Guide Enforcement
+
+For more info check https://flake8.pycqa.org/en/latest/
+
+Run it via calling ``tox -e flake8`` from the project root with the virtual environment enabled.
+
+
+
+pylint
+======
+
+	Pylint is a Python static code analysis tool which looks for programming
+	errors, helps enforcing a coding standard, sniffs for code smells and offers
+	simple refactoring suggestions.
+
+For more info check http://pylint.pycqa.org/en/latest/
+
+Run it via calling ``tox -e pylint`` from the project root with the virtual environment enabled.
+
+
+
+TODO: docs
+==========
+
+```sphinx`` is used for documentation generation.
+
+For more info check https://www.sphinx-doc.org/en/master/index.html
+
+Run it via calling ``tox -e docs`` from the project root with the virtual environment enabled.
+
+
+
+TODO: build
+===========
+
+
+
+TODO: publish
+=============
+
+
+
+Config files
+************
+
+pyproject.toml
+==============
+
+Set the default line width which is used by ``black``.
+
+
+
+pylintrc
+========
+
+Inject virtual env path so that ``pylint`` can find the right packages when invoced by ``tox -e pylint``.
+
+
+
 Tests
------
+*****
 
 ``pytest`` and ``tox``  are used for testing. The tests and the needed files are located within the ``test`` directory. 
 To run the tests simply call ``tox -e pytest`` from the project root with the virtual environment enabled.
-``tox`` will take care of installing the *gaspy* package in development mode and run the tests against it.
+``tox`` will take care of installing the *gumnut_assembler* package in development mode and run the tests against it.
+
 
 
 Scope of tests
-~~~~~~~~~~~~~~
+==============
 
 Tests are run against:
 
-* the *gaspy* package (this way also the code-coverage is determined)
-* the *gaspy* CLI tool
+* the *gumnut_assembler* package (this way also the code-coverage is determined)
+* the *gumnut_assembler* CLI tool
+
 
 
 Objectcode verification
-~~~~~~~~~~~~~~~~~~~~~~~
+=======================
 
 Peter Ashenden's original Gumnut Assembler implementation *gasm* was used to assemble the sources from ``test\asm_source``.
 The generated files (instruction and data memory) are located in ``test\gasm_output``.
-For the test ``test_objectcode_comparison_static`` the files generated by *gaspy* are compared to those from *gasm*.
+For the test ``test_objectcode_comparison_static`` the files generated by *gumnut_assembler* are compared to those from *gasm*.
 
 In future versions I'd like to implement the ``test_objectcode_comparison_dynamic`` again. This would assemble the sources with *gasm* during runtime of the tests.
 
 
 
 Packaging for PyPI
-------------------
+******************
 
 To package the project for distribution and publishing it on PyPI a few steps are involved.
 For more information see https://packaging.python.org/tutorials/packaging-projects/
 
-* Set version in ``gaspy\__init__.py``
+* Set version in ``gumnut_assembler\__init__.py``
 * Run ``tox -e build``
 * Run ``tox -e publish-test``
-* Download and install from test index ``python -m pip install --index-url https://test.pypi.org/simple/ --no-deps gaspy``
+* Download and install from test index ``python -m pip install --index-url https://test.pypi.org/simple/ --no-deps gumnut_assembler``
 
 If all seems alright, repeat above steps and upload to the real PyPI.
 
 * Run ``tox -e publish``
-* Download and install from live index ``python -m pip install gaspy``
+* Download and install from live index ``python -m pip install gumnut_assembler``
 
 
 
 Misc
-----
+****
 
 *needs more explanation and structure*
 
