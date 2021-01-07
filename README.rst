@@ -8,19 +8,19 @@
 
 
 
-gumnut_assembler
+gumnut-assembler
 ################
 
 Gumnut Assembler written in Python.
 
-*gumnut_assembler* is a python-based implementation of Peter Ashenden's Gumnut assembler *gasm* which assembles the machine code to
+*gumnut-assembler* is a python-based implementation of Peter Ashenden's Gumnut assembler *gasm* which assembles the machine code to
 be used with his 8-bit soft-core *Gumnut*. For more information refer to *The Designers Guide to VHDL*
 https://www.sciencedirect.com/book/9780120887859/the-designers-guide-to-vhdl
 
-*gumnut_assembler* was forked from my very first implementation created at the laboratory for digital engineering at the University of
+*gumnut-assembler* was forked from my very first implementation created at the laboratory for digital engineering at the University of
 Applied Sciences Augsburg back in 2015.
 
-As of now, *gumnut_assembler* supports all *gasm* instructions and assembles the same machine code as *gasm*.
+As of now, *gumnut-assembler* supports all *gasm* instructions and assembles the same machine code as *gasm*.
 
 
 
@@ -33,6 +33,16 @@ Please refer to https://gumnut-assembler.readthedocs.io/en/latest/
 
 Changelog
 *********
+
+3.0.0
+=====
+
+Changed
+-------
+
+-  Changed CLI entry point name from ``gumnut_assembler`` to ``gumnut-assembler``
+
+
 
 2.0.0
 =====
@@ -99,4 +109,4 @@ Fixed
 1.0.0
 =====
 
-The initial version which was *gumnut_assembler* was forked from.
+The initial version which was *gumnut-assembler* was forked from.
