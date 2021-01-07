@@ -11,21 +11,21 @@ def capture(command):
 
 
 def test_gumnut_assembler_cli_arg_help():
-    command = ["gumnut_assembler", "-h"]
+    command = ["gumnut-assembler", "-h"]
     out, err, exitcode = capture(command)
     assert exitcode == 0
 
-    command = ["gumnut_assembler", "--help"]
+    command = ["gumnut-assembler", "--help"]
     out, err, exitcode = capture(command)
     assert exitcode == 0
 
 
 def test_gumnut_assembler_cli_arg_version():
-    command = ["gumnut_assembler", "-v"]
+    command = ["gumnut-assembler", "-v"]
     out, err, exitcode = capture(command)
     assert exitcode == 0
 
-    command = ["gumnut_assembler", "--version"]
+    command = ["gumnut-assembler", "--version"]
     out, err, exitcode = capture(command)
     assert exitcode == 0
 
@@ -54,7 +54,7 @@ def test_gumnut_assembler_cli_objectcode_comparison_static():
         gasm_datafile = os.path.join(gasm_directory, source_name + "_data.dat")
         gasm_textfile = os.path.join(gasm_directory, source_name + "_text.dat")
 
-        command = ["gumnut_assembler", source_directory + source, "-o", output_directory]
+        command = ["gumnut-assembler", source_directory + source, "-o", output_directory]
         out, err, exitcode = capture(command)
         assert exitcode == 0
 
