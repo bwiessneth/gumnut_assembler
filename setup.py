@@ -23,7 +23,7 @@ with open("README.rst", "r") as fh:
 
 
 setuptools.setup(
-    name="gumnut_assembler",
+    name="gumnut-assembler",
     version=get_version("gumnut_assembler/__init__.py"),
     author="Benjamin Wiessneth",
     author_email="b.wiessneth@gmail.com",
@@ -38,5 +38,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    entry_points={"console_scripts": ["gumnut_assembler = gumnut_assembler.assembler:main"]},
+    entry_points={"console_scripts": ["gumnut-assembler = gumnut_assembler.assembler:main"]},
 )

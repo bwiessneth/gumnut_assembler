@@ -1,12 +1,12 @@
 Usage
 #####
 
-See the possible arguments and options by calling *gumnut_assembler* with the ``-h`` or ``--help`` argument:
+See the possible arguments and options by calling *gumnut-assembler* with the ``-h`` or ``--help`` argument:
 
 .. code-block:: console
 
-	[ziggy@stardust ~]$ gumnut_assembler --help
-	usage: gumnut_assembler [-h] [-o OUT_DIR] [-j] [-v] source
+	[ziggy@stardust ~]$ gumnut-assembler --help
+	usage: gumnut-assembler [-h] [-o OUT_DIR] [-j] [-v] source
 	Gumnut assembler written in Python
 
 	positional arguments:
@@ -24,13 +24,13 @@ See the possible arguments and options by calling *gumnut_assembler* with the ``
 Assemble from source
 ********************
 
-Assuming you have source file ``jmp.gsm`` located on your desktop you can assemble it by passing it to *gumnut_assembler*
+Assuming you have source file ``jmp.gsm`` located on your desktop you can assemble it by passing it to *gumnut-assembler*
 
 .. code-block:: console
 	
-	[ziggy@stardust ~]$ gumnut_assembler jmp.gsm
+	[ziggy@stardust ~]$ gumnut-assembler jmp.gsm
 
-Per default gumnut_assembler always returns two files:
+Per default gumnut-assembler always returns two files:
 
 * The text file (``jmp_text.dat``) containing assembled the instruction memory
 * The data file (``jmp_data.dat``) containing assembled the data memory
@@ -42,11 +42,11 @@ Those files are always placed in the same directory the source file is located.
 Output directory
 ****************
 
-You can tell *gumnut_assembler* to place the output files into another directory by supplying the ``-o``/``--output`` argument and the desired path:
+You can tell *gumnut-assembler* to place the output files into another directory by supplying the ``-o``/``--output`` argument and the desired path:
 
 .. code-block:: console
 
-	[ziggy@stardust ~]$ gumnut_assembler jmp.gsm -o asm_files
+	[ziggy@stardust ~]$ gumnut-assembler jmp.gsm -o asm_files
 
 
 
@@ -58,7 +58,7 @@ Using this will return the instruction and data memory as a JSON object to ``std
 
 .. code-block:: console
 	
-	[ziggy@stardust ~]$ gumnut_assembler jmp.gsm -j
+	[ziggy@stardust ~]$ gumnut-assembler jmp.gsm -j
 	{"text": [245778, 0, 0, 0, 0, 0, 0, 0, 2305, 245781, 2305, 2305, 245776, 35073, ... ],
 	 "data": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ... ]}
 

@@ -1,4 +1,4 @@
-Welcome to gumnut_assembler's documentation!
+Welcome to gumnut-assembler's documentation!
 ############################################
 
 Contents:
