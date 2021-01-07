@@ -39,4 +39,24 @@ setuptools.setup(
     ],
     python_requires=">=3.6",
     entry_points={"console_scripts": ["gumnut-assembler = gumnut_assembler.assembler:main"]},
+    extras_require={
+        "dev": [
+            "tox",
+            "wheel",
+            "setuptools",
+            "twine",
+            "pytest",
+            "pytest-cov",
+            "flake8",
+            "pylint",
+            "black",
+            "sphinx",
+            "sphinx_rtd_theme",
+        ],
+        "docs": [
+            "sphinx",
+            "sphinx_rtd_theme",
+            "sphinx-autoapi",
+        ],
+    },    
 )
